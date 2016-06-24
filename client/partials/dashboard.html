@@ -2,21 +2,29 @@
   <div  ng-controller = "listsController">
    <h3>  Hello {{current_user.name}}</h3>
     <div id="form" class="col-md-10 col-md-offset-1" class="active">
-        <form>
-          Title:<input type="text" ng-model="new_list.title">
-          Description:<input type="text" ng-model="new_list.description">
+      <div ng-messages="listform.title.$error">
+            <p ng-message = "minlength" style="color:red"> List title should be atleast 5 characters long. </p>
+      </div>
+      <div ng-messages="listform.description.$error">
+            <p ng-message = "minlength" style="color:red"> List description should be atleast 10 characters long. </p>
+      </div>
+
+        <form name="listform">
+          Title:<input type="text" name = "title" ng-model="new_list.title" ng-minlength="5" required>
+          Description:<input type="text" name = "description" ng-model="new_list.description" ng-minlength="10" required>
           Tag a user: <select ng-model = "new_list.tagged_user">
                           <option ng-repeat="user in users">{{user.name}}</option>
                       </select>
           <input type="submit" ng-click="addList(current_user.name)" value = "Add a List">
         </form>
+
     </div>
 
     <div id="display_list" class="col-md-10 col-md-offset-1" class="active">
-        <p>Things I want to do before I die:</p>
+        <h3>Things I want to do before I die:</h3>
         <div ng-repeat = "list in lists | orderBy: created_at">
           <form>
-            <input  ng-bind='list.created_at | date: "longDate"' type="checkbox" checkboxModel = "{value:true}" ng-model ="checkboxModel.value" >{{list._user}}:{{list.title}}: {{list.description}}: {{list.created_at}}<br>
+            <input  ng-bind='list.created_at | date: "longDate"' type="checkbox" checkboxModel = "{value:true}" ng-model ="checkboxModel.value" >{{list._user}}:{{list.title}}: {{list.description}}: {{list.created_at | date:'MMMM d, y'}}<br>
             <p>{{checkboxModel.value}}</p>
             <input type = "hidden" ng-value="checkboxModel.value" >
             
