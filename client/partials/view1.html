@@ -1,0 +1,14 @@
+<div ng-controller="usersController" class="col-md-10 col-md-offset-1" class="active">
+		  <h3>Hello!!</h3>
+		  <h4>Please enter your name to join and share your ideas</h4>
+
+		  <form name="userform">
+			  	<input type="text" name = "name" ng-model= "new_user.name" ng-minlength="4" required>
+	  			<input  type="submit" value ="Enter" ng-click="enterUser()">
+		</form>
+		   <div ng-messages="userform.name.$error">
+					<p ng-message = "minlength"> User name can not be that short. </p>
+					<p ng-message="required">The User name is required.</p>
+				</div>
+
+</div>

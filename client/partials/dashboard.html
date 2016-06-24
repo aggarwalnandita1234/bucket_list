@@ -1,0 +1,37 @@
+
+  <div  ng-controller = "listsController">
+   <h3>  Hello {{current_user.name}}</h3>
+    <div id="form" class="col-md-10 col-md-offset-1" class="active">
+        <form>
+          Title:<input type="text" ng-model="new_list.title">
+          Description:<input type="text" ng-model="new_list.description">
+          Tag a user: <select ng-model = "new_list.tagged_user">
+                          <option ng-repeat="user in users">{{user.name}}</option>
+                      </select>
+          <input type="submit" ng-click="addList(current_user.name)" value = "Add a List">
+        </form>
+    </div>
+
+    <div id="display_list" class="col-md-10 col-md-offset-1" class="active">
+        <p>Things I want to do before I die:</p>
+        <div ng-repeat = "list in lists | orderBy: created_at">
+          <form>
+            <input  ng-bind='list.created_at | date: "longDate"' type="checkbox" checkboxModel = "{value:true}" ng-model ="checkboxModel.value" >{{list._user}}:{{list.title}}: {{list.description}}: {{list.created_at}}<br>
+            <p>{{checkboxModel.value}}</p>
+            <input type = "hidden" ng-value="checkboxModel.value" >
+            
+
+          </form>
+            
+        </div>
+    </div>
+  <div  ng-controller = "usersController">
+    <div id="user_display_list" class="col-md-10 col-md-offset-1" class="active" >
+      <h4>Other users with bucket lists:</h4>
+        <a href = '#/user/{{user._id}}' ng-repeat= "user in users">{{user.name}}</p>
+
+    </div>
+  </div>
+</div>
+          
+          

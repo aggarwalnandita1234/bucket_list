@@ -1,0 +1,34 @@
+<html ng-app="bucket_list">
+<head>
+  <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- require angular -->
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js"></script>
+
+  <script type='text/javascript'>
+  		var bucket_list = angular.module('bucket_list', ['ngRoute', 'ngMessages', 'ngStorage']);
+  </script>
+  <script type='text/javascript' src="./js/config/routes.js">  </script>
+  
+ 
+  <script type='text/javascript' src="./js/model/usersFactory.js">  </script>
+  <script type='text/javascript' src="./js/model/listsFactory.js">  </script>
+
+
+
+  <script type='text/javascript' src="./js/controller/usersController.js">  </script>
+  <script type='text/javascript' src="./js/controller/listsController.js">  </script>
+
+</head>
+  <body>
+    <div>
+        <a href="#/">LogOut</a>
+        <div ng-view=""></div>
+    </div>
+  </body>
+</html>

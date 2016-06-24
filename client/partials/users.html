@@ -1,0 +1,7 @@
+<div ng-controller= "usersController">
+	<h3>{{user.name}} Bucket list</h3>
+	<div ng-repeat = "list in lists">
+
+            <input type="checkbox" checklist-model = "list.title">{{list._user}}:{{list.title}}: {{list.description}}<br>            
+    </div>
+</div>
