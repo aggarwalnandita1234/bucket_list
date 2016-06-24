@@ -25,8 +25,9 @@
         <div ng-repeat = "list in lists | orderBy: created_at">
           <form>
             <input  ng-bind='list.created_at | date: "longDate"' type="checkbox" checkboxModel = "{value:true}" ng-model ="checkboxModel.value" >{{list._user}}:{{list.title}}: {{list.description}}: {{list.created_at | date:'MMMM d, y'}}<br>
-            <p>{{checkboxModel.value}}</p>
-            <input type = "hidden" ng-value="checkboxModel.value" >
+
+            <input type = "hidden"  ng-value="checkboxModel.value" ng-model = "status">
+
             
 
           </form>
